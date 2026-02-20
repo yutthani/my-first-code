@@ -20,6 +20,17 @@
         <p>ยินดีต้อนรับสู่เว็บไซต์ที่สร้างด้วย GitHub Pages ของผม</p>
         <button onclick="celebrate()">กดเพื่อฉลอง!</button>
     </div>
+//Features Calculator
+    <div style="margin: 20px 0;">
+    <input type="number" id="num1" placeholder="เลขตัวแรก" style="width: 80px; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
+    <span style="font-size: 24px; font-weight: bold;"> + </span>
+    <input type="number" id="num2" placeholder="เลขตัวที่สอง" style="width: 80px; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
+</div>
+
+<button onclick="calculate()" style="background-color: #4CAF50; margin-bottom: 10px;">บวกเลขเลย!</button>
+
+<h2 id="result" style="color: #ff4081;">ผลลัพธ์จะโผล่ตรงนี้...</h2>
+    
 
     <script>
         function celebrate() {
@@ -58,6 +69,24 @@
     greetingElement.innerText = text;
 
         };
+
+        function calculate() {
+    // ดึงค่าจากช่องกรอก (ต้องใช้คำสั่ง Number() เพื่อเปลี่ยนจากตัวหนังสือเป็นตัวเลข)
+    const n1 = Number(document.getElementById("num1").value);
+    const n2 = Number(document.getElementById("num2").value);
+    
+    const sum = n1 + n2;
+
+    // แสดงผลลัพธ์
+    document.getElementById("result").innerText = "คำตอบคือ: " + sum + " 🌟";
+
+    // แถม: พลุฉลองตอนคำนวณเสร็จ!
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.8 }
+    });
+}
     </script>
 </body>
 </html>
