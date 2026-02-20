@@ -1,92 +1,53 @@
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>My Awesome Page</title>
-    <style>
-        body { background-color: #f0f2f5; font-family: 'Chalkboard SE', 'Comic Sans MS', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
-        img { width: 150px; border-radius: 50%; border: 5px solid #ffeb3b; }
-        h1 { color: #333; margin-top: 20px; }
-        button { background-color: #ff4081; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; transition: 0.3s; }
-        button:hover { background-color: #c2185b; transform: scale(1.1); }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="images/github-logo-png-transparent-images-11659780018x2ss2wzuqt.png" alt="รูปโปรไฟล์ของฉัน">
-        <h1 id="greeting">สวัสดีครับ!!!</h1>
-        <p>ยินดีต้อนรับสู่เว็บไซต์ที่สร้างด้วย GitHub Pages ของผม</p>
-        <button onclick="celebrate()">กดเพื่อฉลอง!</button>
-    </div>
-//Features Calculator
-    <div style="margin: 20px 0;">
-    <input type="number" id="num1" placeholder="เลขตัวแรก" style="width: 80px; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
-    <span style="font-size: 24px; font-weight: bold;"> + </span>
-    <input type="number" id="num2" placeholder="เลขตัวที่สอง" style="width: 80px; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
-</div>
-
-<button onclick="calculate()" style="background-color: #4CAF50; margin-bottom: 10px;">บวกเลขเลย!</button>
-
-<h2 id="result" style="color: #ff4081;">ผลลัพธ์จะโผล่ตรงนี้...</h2>
-    
-
-    <script>
+<script>
         function celebrate() {
-            // 1. เด้งข้อความทักทาย
             alert("ยินดีด้วยครับ! คุณเก่งขึ้นทุกวันเลยนะเนี่ย 🌟");
-
-            // 2. ยิงพลุ
             confetti({
                 particleCount: 150,
                 spread: 70,
                 origin: { y: 0.6 },
                 colors: ['#ff4081', '#ffeb3b', '#4CAF50']
             });
-        } // <--- ปีกกาปิดของ celebrate ต้องอยู่ตรงนี้!
+        }
 
-        // 3. ฟังก์ชันทำงานทันทีที่เปิดหน้าเว็บ (ย้ายมาอยู่นอก celebrate)
         window.onload = function() {
-    //const hour = new Date().getHours();
-            const hour = 20;
-    const greetingElement = document.getElementById("greeting");
-    const bodyElement = document.body; // ดึงส่วนพื้นหลังมา
-    let text = "";
+            const hour = 20; // โหมดหลอกเวลาคอมพิวเตอร์ ;)
+            const greetingElement = document.getElementById("greeting");
+            const bodyElement = document.body;
+            let text = "";
 
-    if (hour < 12) {
-        text = "☀️ สวัสดีตอนเช้าครับ!";
-        bodyElement.style.backgroundColor = "#f0f2f5"; // สีเทาอ่อนตอนเช้า
-    } else if (hour < 18) {
-        text = "🌤️ สวัสดีตอนบ่ายครับ!";
-        bodyElement.style.backgroundColor = "#fff9c4"; // สีเหลืองอ่อนตอนบ่าย (สดใส)
-    } else {
-        text = "🌙 ดึกแล้วนะ... อย่าลืมพักผ่อนนะครับ";
-        bodyElement.style.backgroundColor = "#263238"; // สีน้ำเงินเข้มตอนดึก
-        bodyElement.style.color = "white"; // เปลี่ยนตัวหนังสือเป็นสีขาวจะได้อ่านง่าย
-    }
-
-    greetingElement.innerText = text;
-
+            if (hour < 12) {
+                text = "☀️ สวัสดีตอนเช้าครับ!";
+                bodyElement.style.backgroundColor = "#f0f2f5";
+            } else if (hour < 18) {
+                text = "🌤️ สวัสดีตอนบ่ายครับ!";
+                bodyElement.style.backgroundColor = "#fff9c4";
+            } else {
+                text = "🌙 ดึกแล้วนะ... อย่าลืมพักผ่อนนะครับ";
+                bodyElement.style.backgroundColor = "#263238";
+                bodyElement.style.color = "white";
+            }
+            greetingElement.innerText = text;
         };
 
-        function calculate() {
-    // ดึงค่าจากช่องกรอก (ต้องใช้คำสั่ง Number() เพื่อเปลี่ยนจากตัวหนังสือเป็นตัวเลข)
-    const n1 = Number(document.getElementById("num1").value);
-    const n2 = Number(document.getElementById("num2").value);
-    
-    const sum = n1 + n2;
+        function calculate(operator) {
+            const n1 = Number(document.getElementById("num1").value);
+            const n2 = Number(document.getElementById("num2").value);
+            let res = 0;
 
-    // แสดงผลลัพธ์
-    document.getElementById("result").innerText = "คำตอบคือ: " + sum + " 🌟";
+            if (operator === '+') res = n1 + n2;
+            else if (operator === '-') res = n1 - n2;
+            else if (operator === '*') res = n1 * n2;
+            else if (operator === '/') {
+                res = n2 !== 0 ? n1 / n2 : "หารด้วย 0 ไม่ได้นะ!";
+            }
 
-    // แถม: พลุฉลองตอนคำนวณเสร็จ!
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.8 }
-    });
-}
+            document.getElementById("result").innerText = "คำตอบคือ: " + res + " 🌟";
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 } });
+        }
+
+        function clearAll() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("result").innerText = "รอคำตอบอยู่จ้า...";
+        }
     </script>
-</body>
-</html>
