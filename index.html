@@ -1,13 +1,29 @@
-<body style="background-color: #ffeb3b; text-align: center; font-family: sans-serif; padding-top: 50px;">
-    <h1>🌈 กิ่งทดลอง... แต่สวยกว่า!</h1>
-    <p>ตอนนี้ผมกำลังแก้โค้ดในโลกคู่ขนานครับ</p>
-    <button onclick="sayHi()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 10px; border: none; background-color: #4CAF50; color: white;">
-    คลิกทักทายหน่อย!
-</button>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Awesome Page</title>
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Chalkboard SE', 'Comic Sans MS', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
+        img { width: 150px; border-radius: 50%; border: 5px solid #ffeb3b; }
+        h1 { color: #333; margin-top: 20px; }
+        button { background-color: #ff4081; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        button:hover { background-color: #c2185b; transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://octodex.github.com/images/inspectocat.jpg" alt="Profile">
+        <h1>สวัสดีครับ! ผมชื่อ...</h1>
+        <p>ยินดีต้อนรับสู่เว็บไซต์ที่สร้างด้วย GitHub Pages ของผม</p>
+        <button onclick="celebrate()">กดเพื่อฉลอง!</button>
+    </div>
 
-<script>
-    function sayHi() {
-        alert("ยินดีด้วย! คุณเพิ่งรัน JavaScript ตัวแรกบน GitHub Pages สำเร็จ!");
-    }
-</script>
+    <script>
+        function celebrate() {
+            alert("ยินดีด้วยครับ! คุณเก่งขึ้นทุกวันเลยนะเนี่ย 🌟");
+        }
+    </script>
 </body>
+</html>
